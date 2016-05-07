@@ -1,0 +1,32 @@
+<script>
+	function padLeft(myWord, len) {
+	  if (myWord.length < len) {
+	    var difference = len - myWord.length;
+	    for (var times = 0; times < difference; times++) {
+	      myWord = '*' + myWord;
+	    }
+	  }
+	  return myWord;
+	}
+	var myPaddedWord = padLeft("LongerWord", 17);
+	console.log(myPaddedWord + " - PaddedWord");
+
+	// string needs to be at least x characters
+	function padLeft(word, len) {
+		var padding = '';
+		for (var i = 0; i < len - word.length; i++) {
+			padding = padding + '*';
+		}
+		return padding + word;
+	}
+
+	function reverseString(myWord) {
+	  var newWord = '';
+	  for (var j = myWord.length - 1; j >= 0; j--) {
+	    newWord = newWord + myWord[j];
+	  }
+	  console.log(newWord);
+	}
+
+	reverseString("Mets");
+</script>
