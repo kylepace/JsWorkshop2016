@@ -1,0 +1,55 @@
+<html>
+<head></head>
+<body>
+	<script>
+		// 1. The function sum should return the count of
+		// the items in myValues;
+		var myValues = [1, 5, 6, 10, 4, 7];
+		function sum(values) {
+			var sumValue = 0;
+
+			for (var i = 0; i < values.length; i++) {
+				// What needs to happen here?
+			}
+
+			return sumValue;
+		}
+		console.log('The answer to problem 1 is ' + sum(myValues));
+
+		// 2. Finish the function to compute the exponent of a number.
+		// n is the power to raise and x is the base number.
+		// for example: exp(3, 2) would be 3 ^ 2. or 3 x 3.
+		function exp(x, n) {
+			var ans = 1;
+
+			// hint, for this to work you will need a loop.
+			// use console.log at each step!
+            ans = x * ans;
+
+			return ans;
+		}
+
+		console.log('Exp of 3^2 is 9 ->' + exp(3, 2));
+		console.log('Exp of 3^3 is 27 ->' + exp(3, 3));
+		// 3. FizzBuzz. If a number is divisible by 5, return Fizz
+		// if divisible by 3, return Buzz, if divisible by 3 and 5
+		// print FizzBuzz.
+		function fizzBuzz(value) {
+			var finalValue = "NotFinished";
+			if (value % 5 == 0) {
+				finalValue = "Fizz";
+			}
+			// Now handle the cases for 3
+			// Also need to handle 5 and 3
+			return finalValue;
+		}
+
+		console.log('5 Fizz ->' + fizzBuzz(5));
+		console.log('10 Fizz ->' + fizzBuzz(10));
+		console.log('3 Buzz ->' + fizzBuzz(3));
+		console.log('12 Buzz ->' + fizzBuzz(12));
+		console.log('15 FizzBuzz ->' + fizzBuzz(15));
+		console.log('60 FizzBuzz ->' + fizzBuzz(60));
+	</script>
+</body>
+<html>
