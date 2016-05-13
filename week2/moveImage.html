@@ -15,19 +15,72 @@
 		<img src="http://pic.1fotonin.com/data/wallpapers/30/WDF_780770.png" />
 	</div>
 	<div>
-		<button>Left</button>
-		<input type="text" placeholder="Pixels" />
-		<button onclick="moveRight()">Right</button>
+		<button onclick="move('left')">Left</button>
+		<input id="pixels" type="text" placeholder="Pixels" />
+		<button onclick="move('right')">Right</button>
 	</div>
 	<script>
 		var imgDiv = document.getElementById('imageDiv');
+		var pixelText = document.getElementById('pixels');
 		// if you want to scroll, you will need parseInt
 		// also will need a function called isNaN()
 		// Use the properties imageDiv.style.left.
+
+		function move(direction) {
+			var defaultPixelsToMove = 10;
+			var currentLocation =  parseInt(imgDiv.style.left);
+			var pixelsToMove = parseInt(pixels.value);
+			// Determine how far over to move.
+			if (isNaN(pixelsToMove)) {
+				pixelsToMove = defaultPixelsToMove;
+			}
+
+			if (direction === 'left') {
+				pixelsToMove = -pixelsToMove;
+			}
+
+			if (isNaN(currentLocation)) {
+				currentLocation = pixelsToMove;
+			} else {
+				currentLocation += pixelsToMove;
+			}
+
+			imgDiv.style.left = currentLocation + "px";
+		}
+
+		// Note this is not being used. Replace with move()
 		function moveRight() {
 			// Find out where we are using imageDiv.style.left
+			var currentLocation =  parseInt(imgDiv.style.left);
+			var pixelsToMove = parseInt(pixels.value);
+			if (isNaN(pixelsToMove)) {
+				pixelsToMove = 10;
+			}
+
+			if (isNaN(currentLocation)) {
+				currentLocation = pixelsToMove;
+			} else {
+				currentLocation += pixelsToMove;
+			}
 			// Determine how far over to move.
-			// Move using imgDiv.style.left = 10 + "px";
+			imgDiv.style.left = currentLocation + "px";
+		}
+
+		// Note this is not being used. Replace with move()
+		function moveLeft() {
+			// Find out where we are using imageDiv.style.left
+			var currentLocation =  parseInt(imgDiv.style.left);
+			var pixelsToMove = parseInt(pixels.value);
+			if (isNaN(pixelsToMove)) {
+				pixelsToMove = 10;
+			}
+			if (isNaN(currentLocation)) {
+				currentLocation = -pixelsToMove;
+			} else {
+				currentLocation += -pixelsToMove;
+			}
+			// Determine how far over to move.
+			imgDiv.style.left = currentLocation + "px";
 		}
 	</script>
 </body>

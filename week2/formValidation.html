@@ -4,13 +4,13 @@
 		<div>
 			<legend>Mortgage Application</legend>
 			<div>
-				<input type="text" placeholder="First Name" />
+				<input id="firstName" type="text" placeholder="First Name" />
 			</div>
 			<div>
-				<input type="text" placeholder="Last Name" />
+				<input id="lastName" type="text" placeholder="Last Name" />
 			</div>
 			<div>
-				<input type="text" placeholder="Email" />
+				<input id="emailAddress" type="text" placeholder="Email" />
 			</div>
 			<div>
 				<select>
@@ -31,10 +31,32 @@
 				</div>
 			</div>
 
-			<button>Create</button>
+			<button onclick="validateForm()">Create</button>
 		</div>
-		<script type="text/javascript">
-			// make sure all form inputs are filled out
-		</script>
+	<script type="text/javascript">
+		var firstName = document.getElementById("firstName");
+		var lastName = document.getElementById("lastName");
+		var emailAddress = document.getElementById("emailAddress");
+
+		function isFieldValid(field) {
+			var isValid = true;
+			if (field.value !== null && field.value.length === 0) {
+				isValid = false;
+			}
+			return isValid;
+		}
+
+		function validateForm() {
+			var isValid = true;
+			if (!isFieldValid(firstName) ||
+				!isFieldValid(lastName) ||
+				!isFieldValid(emailAddress)) {
+				// form is not valid
+				isValid = false;
+			}
+
+			console.log(isValid);
+		}
+	</script>
 	</body>
 </html>

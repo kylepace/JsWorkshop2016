@@ -1,17 +1,18 @@
 <html>
 <head></head>
 <body>
-	<p>
+	<p id="myDiv">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit auctor nulla sed dapibus. Ut ornare tellus et imperdiet tempor. Aliquam eleifend arcu felis, sed vestibulum enim gravida in. Donec eleifend est ut tortor maximus pharetra. Ut eget tortor eget odio sodales consequat in eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate nisl massa, ac eleifend odio accumsan commodo. Duis sed tellus neque. Nam ultricies tristique porttitor. Donec sagittis nunc eget est mattis blandit. Vestibulum ultrices mollis est, vitae laoreet eros sodales sit amet. Cras ullamcorper justo ante, at vulputate enim laoreet a. Quisque et purus finibus, molestie neque nec, venenatis mauris. Vestibulum ac scelerisque dui. Nam a elit sit amet metus venenatis aliquet. Integer elementum porttitor dictum.
 	</p>
 	<div>
-		<button onclick="makeRed()">Red</button>
-		<button>Blue</button>
-		<button>Green</button>
+		<button onclick="changeColor('red')">Red</button>
+		<button onclick="changeColor('blue')">Blue</button>
+		<button onclick="changeColor('lightsalmon')">Green</button>
 	</div>
 	<script>
-		function makeRed() {
-			
+		function changeColor(color) {
+			var myDiv = document.getElementById("myDiv");
+			myDiv.style.color = color;
 		}
 	</script>
 </body>
