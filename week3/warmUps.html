@@ -9,11 +9,8 @@
 	<script>
 		//1. Create an object to representa book, the object should have the following properties:
 		// - Title, Author, PublishedDate
-		var book = {
-			title: 'To Kill a Mockingbird',
-			author: 'Harper Lee',
-			publishedDate: 'NoIdea'
-		};
+
+
 		// 2. Find the longest string in the array
 		var strings = [
 			'adkjnaskdjfnaskdjfnaskdjfnaskjdnfaksjdnfaksjdnfw[dpwqoudhqwifqwiudhf]',
@@ -23,19 +20,11 @@
 		];
 
 		function findLongestString() {
-			var longestString = '';
-			for (var i = 0; i < strings.length; i++) {
-				if (strings[i].length > longestString.length) {
-					longestString = strings[i];
-				}
-			}
-			return longestString;
+
 		}
 		console.log(findLongestString());
 
 		//3.
-		var myDiv = document.getElementById('mySection');
-		myDiv.innerHTML = 'Hello World';
 	</script>
 </body>
 </html>
