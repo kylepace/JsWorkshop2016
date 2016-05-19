@@ -1,0 +1,149 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h4>Party Attendees</h4>
+		<div class="row">
+			<div class="col-md-2">
+				<input id="peopleSearch" type="text" placeholder="search for people" onkeyup="searchPeople()" />
+			</div>
+			<div class="col-md-2">
+				<button id="searchClear" onclick="resetSearch()" class="btn btn-danger">Clear</button>
+			</div>
+		</div>
+		<div class="row">
+			<ul id="peopleList"></ul>
+		</div>
+		<div id="editForm" style="display: none;">
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<input type="text" id="firstName" />
+			</div>
+
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<input type="text" id="lastName" />
+			</div>
+
+			<div class="form-group">
+				<label for="attendees">Attendees</label>
+				<input type="text" id="attendees" />
+			</div>
+
+			<button class="btn btn-primary" onclick="editPerson()">Save</button>
+			<button class="btn btn-cancel" onclick="cancelEditPerson()">Cancel</button>
+		</div>
+	</div>
+	<script>
+		var allPeople = [
+			{ id: 1, first: 'Kyle', last: 'Pace', attendees: 4 },
+			{ id: 2, first: 'Yannick', last: 'Tessier', attendees: 8 },
+			{ id: 3, first: 'John', last: 'Doe', attendees: 2 },
+			{ id: 4, first: 'John', last: 'Dont', attendees: 3 },
+			{ id: 7, first: 'Dale', last: 'Cooper', attendees: 9 },
+			{ id: 8, first: 'Leland', last: 'Palmer', attendees: 1 },
+		];
+		var peopleSection = document.getElementById('peopleList');
+		var peopleSearch = document.getElementById('peopleSearch');
+		var searchClearButton = document.getElementById('searchClear');
+		var firstName = document.getElementById('firstName');
+		var lastName = document.getElementById('lastName');
+		var attendees = document.getElementById('attendees');
+		var editForm = document.getElementById('editForm');
+		var currentEditingId;
+
+		function searchPeople() {
+			var foundPeople = [];
+			var searchTerm = peopleSearch.value;
+			for (var i = 0; i < allPeople.length; i++) {
+				var person = allPeople[i];
+				if (person.first.startsWith(searchTerm) ||
+					person.last.startsWith(searchTerm)) {
+					foundPeople.push(person);
+				}
+			}
+
+			renderPeople(foundPeople);
+			hideSearchClear()
+		}
+
+		function compareAttendees(personOne, personTwo) {
+			return personOne.attendees < personTwo.attendees;
+		}
+
+		function renderPeople(people) {
+			var fullText = '';
+			var sortedPeople = people.sort(compareAttendees);
+			for (var i = 0; i < people.length; i++) {
+				var person = people[i];
+				fullText += '<li><a href="javascript:void(0);"' +
+				' onclick="showEditForm(' + person.id + ')">' +
+					person.first + ' - ' + person.last + ' - ' + person.attendees +
+				'</a>' +
+				'</li>';
+			}
+			peopleSection.innerHTML = fullText;
+		}
+
+		function hideSearchClear() {
+			if (peopleSearch.value === '') {
+				searchClearButton.style.display = 'none';
+			} else {
+				searchClearButton.style.display = 'inherit';
+			}
+		}
+
+		function findPerson(personId) {
+			for (var i = 0; i < allPeople.length; i++) {
+				if (allPeople[i].id === personId) {
+					return allPeople[i];
+				}
+			}
+		}
+
+		function showEditForm(personId) {
+			var person = findPerson(personId);
+			firstName.value = person.first;
+			lastName.value = person.last;
+			attendees.value = person.attendees;
+			currentEditingId = personId;
+			editForm.style.display = 'inherit';
+		}
+
+		function findPerson(personId){
+			for (var i = 0; i < allPeople.length; i++) {
+				if (allPeople[i].id === personId) {
+					return allPeople[i];
+				}
+			}
+		}
+
+		function editPerson() {
+			var person = findPerson(currentEditingId);
+			person.first = firstName.value;
+			person.last = lastName.value;
+			person.attendees = attendees.value;
+			editForm.style.display = 'none';
+			searchPeople();
+		}
+
+		function cancelEditPerson() {
+			editForm.style.display = 'none';
+		}
+
+		function showPeople() {
+			renderPeople(allPeople);
+		}
+
+		function resetSearch() {
+			peopleSearch.value = '';
+			showPeople();
+			hideSearchClear();
+		}
+
+		resetSearch();
+	</script>
+</body>
+</html>
