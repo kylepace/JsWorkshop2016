@@ -1,0 +1,41 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div id="mySection"></div>
+	</div>
+	<script>
+		//1. Create an object to representa book, the object should have the following properties:
+		// - Title, Author, PublishedDate
+		var book = {
+			title: 'To Kill a Mockingbird',
+			author: 'Harper Lee',
+			publishedDate: 'NoIdea'
+		};
+		// 2. Find the longest string in the array
+		var strings = [
+			'adkjnaskdjfnaskdjfnaskdjfnaskjdnfaksjdnfaksjdnfw[dpwqoudhqwifqwiudhf]',
+			'sadlfijasdfjasdofjs',
+			'2ou287rq2jk4n3qisbdfapsdopwjbepuw9euhfwekfouaoidufhoiu9u0ad9ufa',
+			'092u3jkjnsadf8	2ieugqw[diugw0d9fuqwieufbwoeifhiyv8efiwqe]'
+		];
+
+		function findLongestString() {
+			var longestString = '';
+			for (var i = 0; i < strings.length; i++) {
+				if (strings[i].length > longestString.length) {
+					longestString = strings[i];
+				}
+			}
+			return longestString;
+		}
+		console.log(findLongestString());
+
+		//3.
+		var myDiv = document.getElementById('mySection');
+		myDiv.innerHTML = 'Hello World';
+	</script>
+</body>
+</html>

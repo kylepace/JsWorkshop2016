@@ -1,12 +1,22 @@
 ## Sample Exercises
 
-### Warm up Exercises
-1.
-2.
-3. finish with something with html, look it up ONLINE
+## Warm up Exercises
+1. Create an object to represent a book, the object should have the following properties:
+2. Given a list of strings, find the longest string in the array. Print the string out to the console.
+3. Get a reference to the div on the page called "mySection". Make the html of that div say "Hello World". Try googling how to change html with javascript if you get stuck.
+
+## Solo / Group
+
+- Start these and we'll solve them together after a few minutes of trying to solve the problem.
+- Begin with pseudocode in comments to steer yourself in the correct direction.
+
+### Tabs - Group
+
+- Show and hide content based on the tab displayed.
 
 ### Image Slider
 - Create a "sliding" image carousel where the user can cycle through images by pushing left or right.
+- Add buttons for each slide to skip to a slide.
 - Bonus: auto-cycle through the images to the right every 2 seconds.
 
 ### Search Through a List
