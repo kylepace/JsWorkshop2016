@@ -7,12 +7,12 @@
 		<div id="mySection"></div>
 	</div>
 	<script>
-		//1. Create an object to representa book, the object should have the following properties:
+		//1. Create an object to represent a book, the object should have the following properties:
 		// - Title, Author, PublishedDate
-
 
 		// 2. Find the longest string in the array
 		var strings = [
+			'981h3rkjnrihiubw',
 			'adkjnaskdjfnaskdjfnaskdjfnaskjdnfaksjdnfaksjdnfw[dpwqoudhqwifqwiudhf]',
 			'sadlfijasdfjasdofjs',
 			'2ou287rq2jk4n3qisbdfapsdopwjbepuw9euhfwekfouaoidufhoiu9u0ad9ufa',
@@ -20,11 +20,21 @@
 		];
 
 		function findLongestString() {
-
+			// go through each item in the list
+			// compare current item to last item
+			var longestString = '';
+			for (var i = 0; i < strings.length; i++) {
+				if (strings[i].length > longestString.length) {
+					longestString = strings[i];
+				}
+			}
+			return longestString;
 		}
 		console.log(findLongestString());
 
 		//3.
+		var mySection = document.getElementById("mySection");
+		mySection.innerHTML = 'Hello World';
 	</script>
 </body>
 </html>

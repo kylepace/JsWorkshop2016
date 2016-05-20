@@ -7,10 +7,10 @@
 		<h4>Party Attendees</h4>
 		<div class="row">
 			<div class="col-md-2">
-				<input id="peopleSearch" type="text" placeholder="search for people" />
+				<input onkeyup="searchPeople()" id="peopleSearch" type="text" placeholder="search for people" />
 			</div>
 			<div class="col-md-2">
-				<button id="searchClear" class="btn btn-danger">Clear</button>
+				<button style="display:none;" onclick="resetSearch()" id="searchClear" class="btn btn-danger">Clear</button>
 			</div>
 		</div>
 		<div class="row">
@@ -54,7 +54,56 @@
 		var editForm = document.getElementById('editForm');
 		var currentEditingId;
 
+		function formatPerson(x) {
+			return '<li>' + x.first + ' - ' + x.last + ' - ' + x.attendees + '</li>';
+		}
 
+		function showPeople(people) {
+			var html = '';
+			for (var i = 0; i < people.length; i++) {
+				var person = people[i];
+				html += formatPerson(person);
+			}
+			peopleSection.innerHTML = html;
+		}
+
+		function searchPeople() {
+			//startsWith
+			var matched = [];
+			var searchTerm = peopleSearch.value;
+			// compare searchterm to items to in the list
+			// return all the people that matched.
+			for (var i = 0; i < allPeople.length; i++) {
+				var person = allPeople[i];
+				if (person.first.startsWith(searchTerm)) {
+					matched.push(person);
+				}
+			}
+			showPeople(matched);
+			hideSearchClear();
+		}
+
+		function hideSearchClear() {
+			if (peopleSearch.value.length > 0) {
+				searchClearButton.style.display = 'inherit';
+			} else {
+				searchClearButton.style.display = 'none';
+			}
+		}
+
+		function resetSearch() {
+			peopleSearch.value = '';
+			showPeople(allPeople);
+			hideSearchClear();
+		}
+
+		// For Editing a user
+		// When clicking a user, show form.
+		// When clicking cancel, hide form.
+		// When showing form, show user I clicked.
+		// When clicking save, update user.
+
+		showPeople(allPeople);
 	</script>
 </body>
 </html>
