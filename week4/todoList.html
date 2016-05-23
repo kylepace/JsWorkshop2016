@@ -1,0 +1,68 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div>
+			<h4>Add a to-do</h4>
+			<input type="text" id="todoText"  />
+			<input type="text" id="todoPriority" />
+			<button onclick="addTodo()" class="btn btn-primary">Add</button>
+		</div>
+		<div>
+			<button onclick="sortUp()">Sort Up</button>
+			<button onclick="sortDown()">Sort Down</button>
+			<ul id="todoList"></ul>
+		</div>
+	</div>
+	<script>
+		var todoText = document.getElementById('todoText');
+		var todoPriority = document.getElementById('todoPriority');
+		var todoList = document.getElementById('todoList');
+		var todos = [];
+		function addTodo() {
+			if (!todoText.value || todoText.value.length === 0) {
+				alert('You need to have text in there.');
+				return;
+			}
+			if (isNaN(todoPriority.value)) {
+				alert('Priority is not a number!');
+				todoPriority.value = '';
+				return;
+			}
+			todos.push({ text: todoText.value, priority: todoPriority.value });
+			todoText.value = '';
+			todoPriority.value = '';
+			renderTodos();
+		}
+
+		function renderTodos() {
+			var todoHtml = ''
+			for (var i = 0; i < todos.length; i++) {
+				todoHtml += '<li>' + todos[i].text + ' - ' + todos[i].priority + ' - <button onclick="removeTodo(' + i + ')">Remove</button></li>';
+			}
+			todoList.innerHTML = todoHtml;
+		}
+
+		function removeTodo(index) {
+			todos.splice(index, 1);
+			renderTodos();
+		}
+
+		function sortUp() {
+			todos.sort(function (x, y) {
+				return x.priority > y.priority;
+			});
+			renderTodos();
+		}
+
+		function sortDown() {
+			todos.sort(function (x, y) {
+				return x.priority < y.priority;
+			});
+			renderTodos();
+		}
+	</script>
+</body>
+</html>
